@@ -1,0 +1,96 @@
+.wrapper {
+  --border-radius-input: 92px;
+  --search-top-space: 9px;
+  --search-height: 46px;
+  --search-btn-width: 52px;
+
+  height: 60px;
+  box-shadow: 0px 1px 1px rgb(0 0 0 /12);
+  display: flex;
+  justify-content: center;
+}
+
+.inner {
+  height: 100%;
+  width: 1150px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  position: relative;
+  width: 361px;
+  height: var(--search-height);
+  background-color: rgba(78, 78, 78, 0.12);
+  border-radius: var(--border-radius-input);
+  border: transparent;
+  display: flex;
+  padding-left: 16px;
+
+  input {
+    flex: 1;
+    color: #828282;
+    font-size: 14px;
+    height: 100%;
+    border: none;
+    caret-color: #fe2c55;
+    background-color: transparent;
+    outline: none;
+  }
+
+  // khi có chữ nhập vào input thì chuyển css sang .search-btn
+  input:not(:placeholder-shown)~.search-btn {
+    color: rgba(32, 32, 32, 1);
+    background-color: rgba(22, 24, 35, 0.08);
+  }
+
+  input:not(:placeholder-shown)~.clear {
+    display: block;
+  }
+
+  &::before {
+    content: "";
+    background-color: rgb(206, 206, 206);
+    position: absolute;
+    top: var(--search-top-space);
+    right: var(--search-btn-width);
+    width: 1px;
+    height: calc(var(--search-height) - var(--search-top-space)*2);
+  }
+
+  &:focus-within {
+    border: 1.5px solid rgba(77, 77, 77, 0.12);
+  }
+}
+
+.clear,
+.loading {
+  display: none;
+  color: rgba(32, 32, 32, 1);
+  border: none;
+  outline: none;
+  background-color: transparent;
+  position: absolute;
+  right: calc(var(--search-btn-width) + 16px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-btn {
+  padding-right: 16px;
+  width: var(--search-btn-width);
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 1.2rem;
+  color: rgba(32, 32, 32, 0.4);
+  border-top-right-radius: var(--border-radius-input);
+  border-bottom-right-radius: var(--border-radius-input);
+
+  &:hover {
+    background-color: rgba(22, 24, 35, 0.08);
+  }
+}
+
+.actions {}
